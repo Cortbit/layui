@@ -786,7 +786,7 @@ layui.define(['laytpl', 'laypage', 'layer', 'form', 'util'], function(exports){
         that.eachCols(function(i3, item3){
           var field = item3.field || i3
           ,key = options.index + '-' + item3.key
-          ,content = item1[field];
+          ,content = eval('item1.' + field); //| item1[field]; 
           
           if(content === undefined || content === null) content = '';
           if(item3.colGroup) return;
@@ -942,7 +942,7 @@ layui.define(['laytpl', 'laypage', 'layer', 'form', 'util'], function(exports){
       
       that.eachCols(function(i3, item3){
         var field = item3.field || i3
-        ,content = item1[field];
+        ,content =  eval('item1.' + field); //| item1[field];
 
         if(item3.totalRow){ 
           totalNums[field] = (totalNums[field] || 0) + (parseFloat(content) || 0);
