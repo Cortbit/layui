@@ -437,6 +437,8 @@ layui.define('layer', function(exports){
             optionsFirst.value ? TIPS : (optionsFirst.innerHTML || TIPS)
           ) : TIPS;
 
+          var isDisplay = !othis.hasClass('nodisplay');
+         
           //替代元素
           var reElem = $(['<div class="'+ (isSearch ? '' : 'layui-unselect ') + CLASS 
           ,(disabled ? ' layui-select-disabled' : '') +'">'
@@ -465,6 +467,8 @@ layui.define('layer', function(exports){
             }(othis.find('*')) +'</dl>'
           ,'</div>'].join(''));
           
+          if (!isDisplay){reElem.addClass('nodisplay');}
+         
           hasRender[0] && hasRender.remove(); //如果已经渲染，则Rerender
           othis.after(reElem);          
           events.call(this, reElem, disabled, isSearch);
